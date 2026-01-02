@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello App</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hello-text {
+            font-size: 5rem;
+            margin: 30px 0;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .name-input {
+            margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        input {
+            width: 100%;
+            max-width: 300px;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            background-color: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        #greetBtn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        #greetBtn:hover {
+            background-color: #3d8b40;
+            transform: translateY(-3px);
+        }
+        
+        #resetBtn {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        #resetBtn:hover {
+            background-color: #d32f2f;
+            transform: translateY(-3px);
+        }
+        
+        #changeColorBtn {
+            background-color: #2196F3;
+            color: white;
+        }
+        
+        #changeColorBtn:hover {
+            background-color: #0b7dda;
+            transform: translateY(-3px);
+        }
+        
+        .info {
+            margin-top: 40px;
+            font-size: 1rem;
+            line-height: 1.6;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+        }
+        
+        .install-btn {
+            background-color: #FF9800;
+            color: white;
+            margin-top: 15px;
+        }
+        
+        .install-btn:hover {
+            background-color: #e68900;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hello-text {
+                font-size: 4rem;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Simple Hello App</h1>
+        
+        <div class="name-input">
+            <label for="nameInput">Enter your name:</label>
+            <input type="text" id="nameInput" placeholder="Your name here">
+        </div>
+        
+        <div class="hello-text" id="helloDisplay">Hello!</div>
+        
+        <div class="buttons">
+            <button id="greetBtn">Say Hello</button>
+            <button id="resetBtn">Reset</button>
+            <button id="changeColorBtn">Change Color</button>
+            <button id="installBtn" class="install-btn hidden">Install App</button>
+        </div>
+        
+        <div class="info">
+            <p>This is a simple Hello app that can be installed as a Progressive Web App (PWA).</p>
+            <p>Enter your name and click "Say Hello" for a personalized greeting, or use the other buttons to customize the experience.</p>
+            <p>If your browser supports PWA installation, an "Install App" button will appear above.</p>
+        </div>
+    </div>
+    
+    <footer>
+        Simple Hello App &copy; 2023
+    </footer>
+
+    <script>
+        // DOM elements
+        const nameInput = document.getElementById('nameInput');
+        const helloDisplay = document.getElementById('helloDisplay');
+        const greetBtn = document.getElementById('greetBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const changeColorBtn = document.getElementById('changeColorBtn');
+        const installBtn = document.getElementById('installBtn');
+        
+        // Colors for the change color button
+        const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#FF9F43', '#A29BFE', '#FD79A8'];
+        let colorIndex = 0;
+        
+        // Event listeners
+        greetBtn.addEventListener('click', greetUser);
+        resetBtn.addEventListener('click', resetGreeting);
+        changeColorBtn.addEventListener('click', changeColor);
+        nameInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                greetUser();
+            }
+        });
+        
+        // Greet the user with their name
+        function greetUser() {
+            const name = nameInput.value.trim();
+            if (name) {
+                helloDisplay.textContent = `Hello, ${name}!`;
+            } else {
+                helloDisplay.textContent = 'Hello, there!';
+            }
+            
+            // Add some animation
+            helloDisplay.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                helloDisplay.style.transform = 'scale(1)';
+            }, 300);
+        }
+        
+        // Reset to default greeting
+        function resetGreeting() {
+            nameInput.value = '';
+            helloDisplay.textContent = 'Hello!';
+            helloDisplay.style.color = colors[0];
+            colorIndex = 0;
+        }
+        
+        // Change the color of the hello text
+        function changeColor() {
+            colorIndex = (colorIndex + 1) % colors.length;
+            helloDisplay.style.color = colors[colorIndex];
+            
+            // Add some animation
+            helloDisplay.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                helloDisplay.style.transform = 'scale(1)';
+            }, 200);
+        }
+        
+        // PWA installation
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', (event) => {
+            // Prevent the mini-infobar from appearing on mobile
+            event.preventDefault();
+            // Stash the event so it can be triggered later
+            deferredPrompt = event;
+            // Show the install button
+            installBtn.classList.remove('hidden');
+            
+            installBtn.addEventListener('click', () => {
+                // Show the install prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                        installBtn.classList.add('hidden');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            });
+        });
+        
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA was installed');
+            installBtn.classList.add('hidden');
+            deferredPrompt = null;
+        });
+        
+        // Check if the app is running as a PWA
+        if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+            console.log('Running as PWA');
+        }
+        
+        // Initialize with a greeting
+        greetUser();
+    </script>
+</body>
+</html>
