@@ -1,25 +1,4 @@
 {
   "name": "Hello App",
   "short_name": "Hello",
-  "description": "A simple Hello app that greets users",
-  "start_url": "/Tmock/",
-  "scope": "/Tmock/",
-  "display": "standalone",
-  "background_color": "#6a11cb",
-  "theme_color": "#2575fc",
-  "orientation": "portrait-primary",
-  "icons": [
-    {
-      "src": "/Tmock/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/Tmock/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
-}
+  "description": "A simple Hello 
